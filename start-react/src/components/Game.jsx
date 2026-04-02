@@ -41,12 +41,12 @@ class BattleEngine {
     let nextMonsterHealth = monsterHealth;
 
     if (action === "heal") {
-      const healedValue = this.player.randomValue(8, 20);
+      const healedValue = this.player.randomValue(8,15);
       nextPlayerHealth = this.player.applyHeal(nextPlayerHealth, healedValue);
       logs.push(this.createHealLog("player", healedValue));
     } else {
       const damageRange =
-        action === "special" ? { min: 12, max: 25 } : { min: 5, max: 12 };
+        action === "special" ? { min: 8, max: 25 } : { min: 5, max: 12 };
       const playerDamage = this.player.randomValue(damageRange.min, damageRange.max);
       nextMonsterHealth = this.monster.applyDamage(nextMonsterHealth, playerDamage);
       logs.push(this.createDamageLog("player", playerDamage));
